@@ -1,7 +1,6 @@
 package log
 
 import (
-	
 	"os"
 	"testing"
 
@@ -57,7 +56,7 @@ func testReadAt(t *testing.T, s *store) {
 		require.NoError(t, err)
 		require.Equal(t, lenWidth, n)
 		off += int64(n)
-		
+
 		size := enc.Uint64(b)
 		b = make([]byte, size)
 		n, err = s.ReadAt(b, off)
@@ -83,7 +82,7 @@ func TestStoreClose(t *testing.T) {
 
 	err = s.Close()
 	require.NoError(t, err)
-	
+
 	_, afterSize, err := openFile(f.Name())
 	require.NoError(t, err)
 	require.True(t, afterSize > beforeSize)
